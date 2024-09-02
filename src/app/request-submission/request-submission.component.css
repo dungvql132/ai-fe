@@ -1,0 +1,90 @@
+/* src/app/request-submission/request-submission.component.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .request-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #2148C0;
+    position: relative;
+    overflow: hidden;
+    min-width: 50%;
+    margin: 0 auto;
+  }
+  
+  .request-form {
+    position: relative;
+    z-index: 1;
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  h2 {
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  .form-group label {
+    display: block;
+    color: white;
+    font-size: 14px;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 4px;
+    background: transparent;
+    color: white;
+  }
+  
+  .error {
+    color: red;
+    font-size: 0.9em;
+  }
+  
+  .success {
+    color: green;
+    font-size: 1em;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background: white;
+    color: #2148C0;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  button:hover {
+    background: #f0f0f0;
+  }
+  

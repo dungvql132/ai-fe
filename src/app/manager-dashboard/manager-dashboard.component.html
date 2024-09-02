@@ -1,0 +1,36 @@
+<!-- src/app/manager-dashboard/manager-dashboard.component.html -->
+<div class="manager-dashboard-container">
+    <h2>Pending Requests</h2>
+    <div class="filters">
+      <label for="type">Filter by Type:</label>
+      <select id="type" (change)="applyFilters()">
+        <option value="">All</option>
+        <option value="leave">Leave</option>
+        <option value="travel">Travel</option>
+        <option value="expense">Expense</option>
+      </select>
+      <label for="status">Filter by Status:</label>
+      <select id="status" (change)="applyFilters()">
+        <option value="">All</option>
+        <option value="pending">Pending</option>
+        <option value="approved">Approved</option>
+        <option value="rejected">Rejected</option>
+      </select>
+    </div>
+    <div class="requests-list">
+      <div *ngFor="let request of filteredRequests" class="request-item">
+        <h3>{{ request.type | titlecase }} Request</h3>
+        <p><strong>Date:</strong> {{ request.date | date }}</p>
+        <p><strong>Status:</strong> {{ request.status | titlecase }}</p>
+        <p><strong>Details:</strong> {{ request.details }}</p>
+        <div *ngIf="request.type === 'expense'">
+          <p><strong>Amount:</strong> {{ request.amount | currency }}</p>
+        </div>
+        <div class="actions">
+          <button (click)="approveRequest(request.id)">Approve</button>
+          <button (click)="rejectRequest(request.id)">Reject</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
