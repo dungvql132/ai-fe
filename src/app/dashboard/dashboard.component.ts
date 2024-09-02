@@ -1,12 +1,14 @@
 // src/app/dashboard/dashboard.component.ts
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../services/request.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
-  standalone: true
+  standalone: true,
+  imports: [ReactiveFormsModule],
 })
 export class DashboardComponent implements OnInit {
   requests: any[] = [];

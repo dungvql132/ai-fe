@@ -1,13 +1,15 @@
 // src/app/request-submission/request-submission.component.ts
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RequestService } from '../services/request.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-request-submission',
   templateUrl: './request-submission.component.html',
   styleUrls: ['./request-submission.component.css'],
   standalone: true,
+  imports: [ReactiveFormsModule,CommonModule],
 })
 export class RequestSubmissionComponent implements OnInit {
   requestForm: FormGroup;
