@@ -1,12 +1,14 @@
 // src/app/manager-dashboard/manager-dashboard.component.ts
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../services/request.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-manager-dashboard',
   templateUrl: './manager-dashboard.component.html',
   styleUrls: ['./manager-dashboard.component.css'],
-  standalone: true
+  standalone: true,
+  imports: [CommonModule]
 })
 export class ManagerDashboardComponent implements OnInit {
   requests: any[] = [];
