@@ -9,10 +9,21 @@
     <nav class="hidden md:flex space-x-6">
       <a href="/dashboard" class="text-white hover:text-light">Dashboard</a>
       <a href="/requestSubmission" class="text-white hover:text-light">Requests</a>
-      <a href="#" class="text-white hover:text-light">Reports</a>
+      <a href="/report" class="text-white hover:text-light">Reports</a>
       <a href="/managerDashboard" class="text-white hover:text-light">Admin Panel</a>
     </nav>
-
+    <div class="language-switcher">
+      <select 
+        [value]="selectedLanguage"
+        (change)="switchLanguage($event.target.value)" 
+        class="bg-white border border-gray-300 text-dark text-sm rounded-lg focus:ring-primary focus:border-primary p-2"
+      >
+        <option value="en">en</option>
+        <option value="vi">vi</option>
+      </select>
+    </div>
+    
+    
     <!-- User Profile Dropdown -->
     <div class="relative">
       <button

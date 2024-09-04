@@ -1,0 +1,92 @@
+<div class="flex items-center justify-center min-h-screen bg-primary">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+      <div class="logo"></div>
+      <h2 class="text-2xl font-medium text-center text-dark mb-6">Register</h2>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <!-- Trường name -->
+        <div class="mb-4">
+          <label for="name" class="block text-dark mb-2">Name</label>
+          <input
+            id="name"
+            formControlName="name"
+            type="text"
+            class="w-full p-3 border border-dark rounded-lg"
+            placeholder="Enter your name"
+          />
+          <div
+            *ngIf="
+              registerForm.get('name')?.hasError('required') &&
+              (registerForm.get('name')?.touched ||
+                registerForm.get('name')?.dirty)
+            "
+            class="text-error italic"
+          >
+            Name is required.
+          </div>
+        </div>
+  
+        <!-- Trường email -->
+        <div class="mb-4">
+          <label for="email" class="block text-dark mb-2">Email</label>
+          <input
+            id="email"
+            formControlName="email"
+            type="text"
+            class="w-full p-3 border border-dark rounded-lg"
+            placeholder="Enter your email"
+          />
+          <div
+            *ngIf="
+              registerForm.get('email')?.hasError('required') &&
+              (registerForm.get('email')?.touched ||
+                registerForm.get('email')?.dirty)
+            "
+            class="text-error italic"
+          >
+            Email is required.
+          </div>
+          <div
+            *ngIf="
+              registerForm.get('email')?.hasError('email') &&
+              (registerForm.get('email')?.touched ||
+                registerForm.get('email')?.dirty)
+            "
+            class="text-error italic"
+          >
+            Invalid email format.
+          </div>
+        </div>
+  
+        <!-- Trường password -->
+        <div class="mb-6">
+          <label for="password" class="block text-dark mb-2">Password</label>
+          <input
+            id="password"
+            formControlName="password"
+            type="password"
+            class="w-full p-3 border border-dark rounded-lg"
+            placeholder="Enter your password"
+          />
+          <div
+            *ngIf="
+              registerForm.get('password')?.invalid &&
+              (registerForm.get('password')?.touched ||
+                registerForm.get('password')?.dirty)
+            "
+            class="text-error italic"
+          >
+            Password is required.
+          </div>
+        </div>
+  
+        <button
+          type="submit"
+          [disabled]="registerForm.invalid"
+          class="w-full bg-dark text-white p-3 rounded-lg"
+        >
+          Register
+        </button>
+      </form>
+    </div>
+  </div>
+  

@@ -7,11 +7,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:5000/api/auth';
+  private apiUrl = 'http://localhost:5001/api/auth';
 
   constructor(private http: HttpClient) {}
 
-  login(credentials: Partial<{ username: string; password: string }>): Observable<any> {
-    return this.http.post<any>(this.apiUrl, credentials);
+  login(credentials: Partial<{ email: string; password: string }>): Observable<any> {
+    return this.http.post<any>(this.apiUrl + `/login`, credentials);
+  }
+
+  register(credentials: Partial<{ email: string; password: string }>): Observable<any> {
+    return this.http.post<any>(this.apiUrl + `/register`, credentials);
   }
 }

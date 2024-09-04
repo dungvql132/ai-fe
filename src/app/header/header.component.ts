@@ -11,9 +11,20 @@ import { Component } from '@angular/core';
 
 export class HeaderComponent {
   isUserMenuOpen = false;
+  selectedLanguage: string;
+
+  ngOnInit(): void {
+    this.selectedLanguage = localStorage.getItem('lang') || 'en';
+  }
 
   toggleUserMenu() {
     this.isUserMenuOpen = !this.isUserMenuOpen;
   }
 
+  switchLanguage(language: string): void {
+    localStorage.setItem("lang",language);
+    location.reload();
+    console.log("lang: ",language);
+    
+  }
 }

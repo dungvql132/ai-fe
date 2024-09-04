@@ -1,45 +1,60 @@
 <div class="container flex flex-col py-4">
-  <h2 class="text-2xl font-medium text-dark mb-8">Submit a Request</h2>
+  <h2 class="text-2xl font-medium text-dark mb-8">{{ translations.submitARequest }}</h2>
   <form [formGroup]="requestForm" (ngSubmit)="onSubmit()" class="self-center w-full">
     <div class="grid grid-cols-3 gap-4 my-8">
-      <label for="type" class="mb-2 text-dark mr-4">Request Type:</label>
+      <label for="type" class="mb-2 text-dark mr-4">{{ translations.requestType }}</label>
       <select
         id="type"
         formControlName="type"
         class="bg-d-white col-span-2 border border-secondary text-dark text-sm rounded-lg focus:ring-secondary focus:border-primary w-50 p-1.5"
       >
-        <option value="leave">Leave</option>
-        <option value="travel">Travel</option>
-        <option value="expense">Expense</option>
+        <option value="leave">{{ translations.leave }}</option>
+        <option value="travel">{{ translations.travel }}</option>
+        <option value="expense">{{ translations.expense }}</option>
       </select>
     </div>
     <div class="grid grid-cols-3 gap-4 my-8">
-      <label for="details" class="mb-2 text-dark mr-4">Details:</label>
-      <textarea
-        id="details"
-        formControlName="details"
-        class="bg-d-white col-span-2 border border-secondary text-dark text-sm rounded-lg focus:ring-secondary focus:border-primary w-50 p-1.5"
-      ></textarea>
-    </div>
-    <div
-      class="grid grid-cols-3 gap-4 my-8"
-      *ngIf="requestForm.get('type').value === 'expense'"
-    >
-      <label for="amount" class="mb-2 text-dark mr-4">Amount:</label>
-
+      <label for="startDate" class="mb-2 text-dark mr-4">{{ translations.startDate }}</label>
       <input
-        id="amount"
-        formControlName="amount"
-        type="number"
+        id="startDate"
+        formControlName="startDate"
+        type="date"
         class="bg-d-white col-span-2 border border-secondary text-dark text-sm rounded-lg focus:ring-secondary focus:border-primary w-50 p-1.5"
       />
     </div>
     <div class="grid grid-cols-3 gap-4 my-8">
-      <label for="date" class="mb-2 text-dark mr-4">Date:</label>
+      <label for="endDate" class="mb-2 text-dark mr-4">{{ translations.endDate }}</label>
       <input
-        id="date"
-        formControlName="date"
+        id="endDate"
+        formControlName="endDate"
         type="date"
+        class="bg-d-white col-span-2 border border-secondary text-dark text-sm rounded-lg focus:ring-secondary focus:border-primary w-50 p-1.5"
+      />
+    </div>
+    <div class="grid grid-cols-3 gap-4 my-8">
+      <label for="reason" class="mb-2 text-dark mr-4">{{ translations.reason }}</label>
+      <textarea
+        id="reason"
+        formControlName="reason"
+        class="bg-d-white col-span-2 border border-secondary text-dark text-sm rounded-lg focus:ring-secondary focus:border-primary w-50 p-1.5"
+      ></textarea>
+    </div>
+    <div class="grid grid-cols-3 gap-4 my-8">
+      <label for="attachment" class="mb-2 text-dark mr-4">{{ translations.attachment }}</label>
+      <input
+        id="attachment"
+        formControlName="attachment"
+        type="file"
+        (change)="onFileChange($event)"
+        class="bg-d-white col-span-2 border border-secondary text-dark text-sm rounded-lg focus:ring-secondary focus:border-primary w-50 p-1.5"
+      />
+    </div>
+    <div class="grid grid-cols-3 gap-4 my-8">
+      <label for="department" class="mb-2 text-dark mr-4">{{ translations.department }}</label>
+      <input
+        id="department"
+        formControlName="department"
+        type="text"
         class="bg-d-white col-span-2 border border-secondary text-dark text-sm rounded-lg focus:ring-secondary focus:border-primary w-50 p-1.5"
       />
     </div>
@@ -48,9 +63,9 @@
       class="rounded-md bg-primary hover:bg-tertiary text-white px-8 py-2 mt-8 float-right"
       [disabled]="requestForm.invalid"
     >
-      Submit
+      {{ translations.submit }}
     </button>
   </form>
-  <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
-  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+  <div *ngIf="successMessage" class="success">{{ translations.successMessage }}</div>
+  <div *ngIf="errorMessage" class="error">{{ translations.errorMessage }}</div>
 </div>

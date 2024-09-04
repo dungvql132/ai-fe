@@ -1,0 +1,18 @@
+<div class="container py-4">
+    <h2 class="text-2xl font-medium text-dark mb-6">{{ translations.myRequestsOverview }}</h2>
+    <div class="request-summary grid grid-cols-3 gap-6">
+      <div class="summary-item flex flex-col items-center justify-center p-6 border-2 border-gray-300 rounded-lg">
+        <div class="text-3xl font-bold">{{ abnormalCaseCount }}</div>
+        <div class="text-sm text-gray-500">{{ translations.travel }}</div>
+      </div>
+      <div class="summary-item flex flex-col items-center justify-center p-6 border-2 border-gray-300 rounded-lg">
+        <div class="text-3xl font-bold">{{ lateComingEarlyLeaveCount }}</div>
+        <div class="text-sm text-gray-500">{{ translations.leave }}</div>
+      </div>
+      <div class="summary-item flex flex-col items-center justify-center p-6 border-2 border-gray-300 rounded-lg">
+        <div class="text-3xl font-bold">{{ pendingRequestCount }}</div>
+        <div class="text-sm text-gray-500">{{ translations.expense }}</div>
+      </div>
+    </div>
+  </div>
+  

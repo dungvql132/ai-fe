@@ -2,6 +2,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../services/request.service';
 import { CommonModule } from '@angular/common';
+import { GlobalErrorHandlerService } from '../services/error-handler.service';
+import trans from '../shared/trans'
 
 @Component({
   selector: 'app-manager-dashboard',
@@ -15,17 +17,21 @@ export class ManagerDashboardComponent implements OnInit {
   filteredRequests: any[] = [];
   filterType: string = '';
   filterStatus: string = '';
+  translations: any;
 
-  constructor(private requestService: RequestService) {}
+  constructor(private requestService: RequestService, private globalErrorHandlerService: GlobalErrorHandlerService) {}
 
   ngOnInit(): void {
+    const lang = localStorage.getItem("lang");
+    this.translations = trans[lang] || trans['en'];
     this.requestService.getPendingRequests().subscribe(
       (res) => {
+        console.log("getPendingRequests: ", res);
         this.requests = res;
         this.filteredRequests = res;
       },
       (err) => {
-        console.error(err);
+        this.globalErrorHandlerService.handleError(err);
       }
     );
   }
@@ -45,7 +51,7 @@ export class ManagerDashboardComponent implements OnInit {
         this.updateRequestStatus(requestId, 'approved');
       },
       (err) => {
-        console.error(err);
+        this.globalErrorHandlerService.handleError(err);
       }
     );
   }
@@ -56,7 +62,7 @@ export class ManagerDashboardComponent implements OnInit {
         this.updateRequestStatus(requestId, 'rejected');
       },
       (err) => {
-        console.error(err);
+        this.globalErrorHandlerService.handleError(err);
       }
     );
   }

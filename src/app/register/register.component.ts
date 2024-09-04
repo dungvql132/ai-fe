@@ -7,14 +7,15 @@ import { GlobalErrorHandlerService } from '../services/error-handler.service';
 import { NotificationService } from '../services/notification.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css'],
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
 })
-export class LoginComponent implements OnInit {
-  loginForm = new FormGroup({
+export class RegisterComponent implements OnInit {
+  registerForm = new FormGroup({
+    name: new FormControl(''),
     password: new FormControl(''),
     email: new FormControl(''),
   });
@@ -27,29 +28,23 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loginForm = new FormGroup({
+    this.registerForm = new FormGroup({
+      name: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
     });
   }
 
   onSubmit(): void {
-    if (this.loginForm.invalid) {
+    if (this.registerForm.invalid) {
       console.log('Please correct the highlighted errors and try again.');
     }
-    if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.value).subscribe(
+    if (this.registerForm.valid) {
+      this.authService.register(this.registerForm.value).subscribe(
         (res) => {
-          console.log("res: ",res);
+          console.log("res: ", res);
           localStorage.setItem('token', res.token);
           const userRole = res.role;
-          // if (userRole === 'employee') {
-          //   this.router.navigate(['/employee-dashboard']);
-          // } else if (userRole === 'manager') {
-          //   this.router.navigate(['/manager-dashboard']);
-          // } else if (userRole === 'administrator') {
-          //   this.router.navigate(['/admin-dashboard']);
-          // }
           this.router.navigate(['/dashboard']);
         },
         (err) => {

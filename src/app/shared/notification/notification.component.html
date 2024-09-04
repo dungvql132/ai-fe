@@ -1,0 +1,7 @@
+<div *ngIf="showNotification" class="fixed top-4 right-4 w-96 p-4 bg-red-500 text-white rounded shadow-lg z-50">
+    <div class="flex justify-between items-center">
+      <span>{{ message }}</span>
+      <button (click)="closeNotification()" class="text-white hover:text-gray-300">&times;</button>
+    </div>
+  </div>
+  

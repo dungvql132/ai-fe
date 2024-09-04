@@ -7,31 +7,33 @@ import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { RegisterComponent } from './register/register.component';
+import { NotificationComponent } from './shared/notification/notification.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginComponent,RequestSubmissionComponent,DashboardComponent,ManagerDashboardComponent,HeaderComponent, FooterComponent, CommonModule],
+  imports: [RouterOutlet,NotificationComponent, LoginComponent, RegisterComponent, RequestSubmissionComponent, DashboardComponent, ManagerDashboardComponent, HeaderComponent, FooterComponent, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 
 export class AppComponent {
   title = 'fe';
-  
+
 
   showHead: boolean = true;
 
   constructor(private router: Router) {
     // on route change to '/login', set the variable showHead to false
-      router.events.forEach((event) => {
-        if (event instanceof NavigationStart) {
-          if (event['url'] == '/login') {
-            this.showHead = false;
-          } else {
-            this.showHead = true;
-          }
+    router.events.forEach((event) => {
+      if (event instanceof NavigationStart) {
+        if (event['url'] == '/login' || event['url'] == '/register') {
+          this.showHead = false;
+        } else {
+          this.showHead = true;
         }
-      });
-    }
+      }
+    });
+  }
 }
