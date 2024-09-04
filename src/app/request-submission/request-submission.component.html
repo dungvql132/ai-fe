@@ -1,31 +1,56 @@
-<!-- src/app/request-submission/request-submission.component.html -->
-<div class="request-container">
-  <div class="request-form">
-    <h2>Submit a Request</h2>
-    <form [formGroup]="requestForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="type">Request Type</label>
-        <select id="type" formControlName="type">
-          <option value="leave">Leave</option>
-          <option value="travel">Travel</option>
-          <option value="expense">Expense</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="details">Details</label>
-        <textarea id="details" formControlName="details"></textarea>
-      </div>
-      <div class="form-group" *ngIf="requestForm.get('type').value === 'expense'">
-        <label for="amount">Amount</label>
-        <input id="amount" formControlName="amount" type="number" />
-      </div>
-      <div class="form-group">
-        <label for="date">Date</label>
-        <input id="date" formControlName="date" type="date" />
-      </div>
-      <button type="submit" [disabled]="requestForm.invalid">Submit</button>
-    </form>
-    <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
-    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
-  </div>
+<div class="container flex flex-col py-4">
+  <h2 class="text-2xl font-medium text-dark mb-8">Submit a Request</h2>
+  <form [formGroup]="requestForm" (ngSubmit)="onSubmit()" class="self-center w-full">
+    <div class="grid grid-cols-3 gap-4 my-8">
+      <label for="type" class="mb-2 text-dark mr-4">Request Type:</label>
+      <select
+        id="type"
+        formControlName="type"
+        class="bg-d-white col-span-2 border border-secondary text-dark text-sm rounded-lg focus:ring-secondary focus:border-primary w-50 p-1.5"
+      >
+        <option value="leave">Leave</option>
+        <option value="travel">Travel</option>
+        <option value="expense">Expense</option>
+      </select>
+    </div>
+    <div class="grid grid-cols-3 gap-4 my-8">
+      <label for="details" class="mb-2 text-dark mr-4">Details:</label>
+      <textarea
+        id="details"
+        formControlName="details"
+        class="bg-d-white col-span-2 border border-secondary text-dark text-sm rounded-lg focus:ring-secondary focus:border-primary w-50 p-1.5"
+      ></textarea>
+    </div>
+    <div
+      class="grid grid-cols-3 gap-4 my-8"
+      *ngIf="requestForm.get('type').value === 'expense'"
+    >
+      <label for="amount" class="mb-2 text-dark mr-4">Amount:</label>
+
+      <input
+        id="amount"
+        formControlName="amount"
+        type="number"
+        class="bg-d-white col-span-2 border border-secondary text-dark text-sm rounded-lg focus:ring-secondary focus:border-primary w-50 p-1.5"
+      />
+    </div>
+    <div class="grid grid-cols-3 gap-4 my-8">
+      <label for="date" class="mb-2 text-dark mr-4">Date:</label>
+      <input
+        id="date"
+        formControlName="date"
+        type="date"
+        class="bg-d-white col-span-2 border border-secondary text-dark text-sm rounded-lg focus:ring-secondary focus:border-primary w-50 p-1.5"
+      />
+    </div>
+    <button
+      type="submit"
+      class="rounded-md bg-primary hover:bg-tertiary text-white px-8 py-2 mt-8 float-right"
+      [disabled]="requestForm.invalid"
+    >
+      Submit
+    </button>
+  </form>
+  <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
 </div>

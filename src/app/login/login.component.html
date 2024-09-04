@@ -1,28 +1,73 @@
-<div class="login-container">
-  <div class="login-form">
+<div class="flex items-center justify-center min-h-screen bg-primary">
+  <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
     <div class="logo"></div>
-    <h2>Login</h2>
+    <h2 class="text-2xl font-medium text-center text-dark mb-6">Login</h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input id="username" formControlName="username" type="text" />
-        <div *ngIf="loginForm.get('username')?.hasError('required') && (loginForm.get('username')?.touched || loginForm.get('username')?.dirty)" class="error">
+      <div class="mb-4">
+        <label for="username" class="block text-dark mb-2">Username</label>
+        <input
+          id="username"
+          formControlName="username"
+          type="text"
+          id="email"
+          class="w-full p-3 border border-dark rounded-lg"
+          placeholder="Enter your username"
+        />
+        <div
+          *ngIf="
+            loginForm.get('username')?.hasError('required') &&
+            (loginForm.get('username')?.touched ||
+              loginForm.get('username')?.dirty)
+          "
+          class="text-error italic"
+        >
           Username is required.
         </div>
-        <div *ngIf="loginForm.get('username')?.hasError('email') && (loginForm.get('username')?.touched || loginForm.get('username')?.dirty)" class="error">
+        <div
+          *ngIf="
+            loginForm.get('username')?.hasError('email') &&
+            (loginForm.get('username')?.touched ||
+              loginForm.get('username')?.dirty)
+          "
+          class="text-error italic"
+        >
           Invalid email format.
         </div>
       </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input id="password" formControlName="password" type="password" />
+      <div class="mb-6">
+        <label for="password" class="block text-dark mb-2">Password</label>
+        <input
+          id="password"
+          formControlName="password"
+          type="password"
+          class="w-full p-3 border border-dark rounded-lg"
+          placeholder="Enter your password"
+        />
         <!-- Hiển thị lỗi nếu trường password không hợp lệ -->
-        <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)" class="error">
+        <div
+          *ngIf="
+            loginForm.get('password')?.invalid &&
+            (loginForm.get('password')?.touched ||
+              loginForm.get('password')?.dirty)
+          "
+          class="text-error italic"
+        >
           Password is required.
         </div>
       </div>
-      <button type="submit" [disabled]="loginForm.invalid">Login</button>
+      <button
+        type="submit"
+        [disabled]="loginForm.invalid"
+        class="w-full bg-dark text-white p-3 rounded-lg"
+      >
+        Login
+      </button>
     </form>
-    <p class="forgot-password">Forgot password?</p>
+    <p class="text-center text-dark mt-6">
+      Don't have an account? <a href="#" class="underline">Sign up</a>
+    </p>
+    <p class="text-center text-dark mt-6">
+      <a href="#" class="underline">Forgot password?</a>
+    </p>
   </div>
 </div>

@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
 
 export const routes: Routes = [
+    { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     {path:'login',component: LoginComponent},
     {path:'requestSubmission',component: RequestSubmissionComponent},
     {path:'dashboard',component: DashboardComponent},

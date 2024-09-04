@@ -1,32 +1,72 @@
 <!-- src/app/dashboard/dashboard.component.html -->
-<div class="dashboard-container">
-    <h2>My Requests</h2>
-    <div class="filters">
-      <label for="type">Filter by Type:</label>
-      <select id="type" (change)="applyFilters()">
-        <option value="">All</option>
-        <option value="leave">Leave</option>
-        <option value="travel">Travel</option>
-        <option value="expense">Expense</option>
-      </select>
-      <label for="status">Filter by Status:</label>
-      <select id="status" (change)="applyFilters()">
-        <option value="">All</option>
-        <option value="pending">Pending</option>
-        <option value="approved">Approved</option>
-        <option value="rejected">Rejected</option>
-      </select>
-    </div>
-    <div class="requests-list">
-      <div *ngFor="let request of filteredRequests" class="request-item">
-        <h3>{{ request.type | titlecase }} Request</h3>
-        <p><strong>Date:</strong> {{ request.date | date }}</p>
-        <p><strong>Status:</strong> {{ request.status | titlecase }}</p>
-        <p><strong>Details:</strong> {{ request.details }}</p>
-        <div *ngIf="request.type === 'expense'">
-          <p><strong>Amount:</strong> {{ request.amount | currency }}</p>
-        </div>
-      </div>
-    </div>
+<div class="container py-4">
+  <h2 class="text-2xl font-medium text-dark mb-6">My Requests</h2>
+  <div class="filters flex justify-end items-center gap-3 w-full">
+    <label class="block mb-2 text-sm font-medium text-dark" for="type"
+      >Filter by Type:</label
+    >
+    <select
+      class="bg-white border border-secondary text-dark text-sm rounded-lg focus:ring-secondary focus:border-primary block w-50 p-2.5"
+      id="type"
+      (change)="applyFilters()"
+    >
+      <option value="">All</option>
+      <option value="leave">Leave</option>
+      <option value="travel">Travel</option>
+      <option value="expense">Expense</option>
+    </select>
+    <label class="block mb-2 text-sm font-medium text-dark" for="status"
+      >Filter by Status:</label
+    >
+    <select
+      class="bg-white border border-secondary text-dark text-sm rounded-lg focus:ring-secondary focus:border-primary block w-50 p-2.5"
+      id="status"
+      (change)="applyFilters()"
+    >
+      <option value="">All</option>
+      <option value="pending">Pending</option>
+      <option value="approved">Approved</option>
+      <option value="rejected">Rejected</option>
+    </select>
   </div>
-  
+  <div class="pt-8">
+    <table class="w-full text-sm text-left rtl:text-right text-dark">
+      <thead class="text-xs text-dark uppercase bg-white">
+        <tr>
+          <th scope="col" class="px-6 py-3 border-l-2 border-secondary">
+            Request
+          </th>
+          <th scope="col" class="px-6 py-3 border-l-2 border-secondary">
+            Date
+          </th>
+          <th scope="col" class="px-6 py-3 border-l-2 border-secondary">
+            Status
+          </th>
+          <th scope="col" class="px-6 py-3 border-l-2 border-secondary">
+            Details
+          </th>
+          <th scope="col" class="px-6 py-3 border-l-2 border-secondary">
+            Amount
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let request of filteredRequests" class="bg-white border-b">
+          <td class="px-6 py-4">{{ request.type | titlecase }} Request</td>
+          <td class="px-6 py-4">
+            {{ request.date | date }}
+          </td>
+          <td class="px-6 py-4">
+            {{ request.status | titlecase }}
+          </td>
+          <td class="px-6 py-4 break-all w-1/3">
+            {{ request.details }}
+          </td>
+          <td class="px-6 py-4">
+            {{ request.type === "expense" ? (request.amount | currency) : "-" }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

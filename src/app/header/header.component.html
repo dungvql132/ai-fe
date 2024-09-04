@@ -1,0 +1,42 @@
+<header class="bg-primary shadow-md p-4">
+  <div class="container mx-auto flex justify-between items-center">
+    <!-- Logo -->
+    <div class="flex items-center">
+      <span class="ml-2 text-xl font-semibold text-white">Company Name</span>
+    </div>
+
+    <!-- Navigation Links -->
+    <nav class="hidden md:flex space-x-6">
+      <a href="/dashboard" class="text-white hover:text-light">Dashboard</a>
+      <a href="/requestSubmission" class="text-white hover:text-light">Requests</a>
+      <a href="#" class="text-white hover:text-light">Reports</a>
+      <a href="/managerDashboard" class="text-white hover:text-light">Admin Panel</a>
+    </nav>
+
+    <!-- User Profile Dropdown -->
+    <div class="relative">
+      <button
+        (click)="toggleUserMenu()"
+        class="flex items-center text-white focus:outline-none"
+      >
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/219/219970.png"
+          alt="User Profile"
+          class="h-10 w-10 rounded-full"
+        />
+        <span class="ml-2 hidden md:block">John Doe</span>
+        <i class="ml-2 fas fa-chevron-down"></i>
+      </button>
+      <div
+        *ngIf="isUserMenuOpen"
+        class="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg"
+      >
+        <a href="#" class="block px-4 py-2 text-dark hover:bg-light">Profile</a>
+        <a href="#" class="block px-4 py-2 text-dark hover:bg-light"
+          >Settings</a
+        >
+        <a href="#" class="block px-4 py-2 text-dark hover:bg-light">Logout</a>
+      </div>
+    </div>
+  </div>
+</header>
