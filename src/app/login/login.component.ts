@@ -42,7 +42,10 @@ export class LoginComponent implements OnInit {
         (res) => {
           console.log("res: ",res);
           localStorage.setItem('token', res.token);
+          localStorage.setItem('role', res.role);
+          localStorage.setItem('name', res.userName);
           const userRole = res.role;
+          const userName = res.userName;
           // if (userRole === 'employee') {
           //   this.router.navigate(['/employee-dashboard']);
           // } else if (userRole === 'manager') {

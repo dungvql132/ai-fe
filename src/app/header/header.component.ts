@@ -12,9 +12,13 @@ import { Component } from '@angular/core';
 export class HeaderComponent {
   isUserMenuOpen = false;
   selectedLanguage: string;
+  role: string;
+  name: string;
 
   ngOnInit(): void {
     this.selectedLanguage = localStorage.getItem('lang') || 'en';
+    this.role = localStorage.getItem('role') || '';
+    this.name = localStorage.getItem('name') || '';
   }
 
   toggleUserMenu() {
@@ -26,5 +30,12 @@ export class HeaderComponent {
     location.reload();
     console.log("lang: ",language);
     
+  }
+
+  logout(): void {
+    // Clear the relevant fields from localStorage
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('name');
   }
 }

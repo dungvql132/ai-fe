@@ -4,13 +4,14 @@ import { RequestService } from '../services/request.service';
 import { CommonModule } from '@angular/common';
 import { GlobalErrorHandlerService } from '../services/error-handler.service';
 import trans from '../shared/trans'
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-manager-dashboard',
   templateUrl: './manager-dashboard.component.html',
   styleUrls: ['./manager-dashboard.component.css'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [FormsModule,CommonModule]
 })
 export class ManagerDashboardComponent implements OnInit {
   requests: any[] = [];

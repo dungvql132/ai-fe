@@ -7,10 +7,10 @@ import { Subject, Observable } from 'rxjs';
 export class NotificationService {
   private notificationSubject = new Subject<any>();
 
-  constructor() {}
+  constructor() { }
 
-  showNotification(message: string) {
-    this.notificationSubject.next({ message });
+  showNotification(message: string, type: string) {
+    this.notificationSubject.next({ message, type });
   }
 
   getNotification(): Observable<any> {

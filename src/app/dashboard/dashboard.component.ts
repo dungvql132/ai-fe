@@ -1,25 +1,31 @@
-// src/app/dashboard/dashboard.component.ts
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../services/request.service';
 import { CommonModule } from '@angular/common';
 import { GlobalErrorHandlerService } from '../services/error-handler.service';
-import trans from '../shared/trans'
+import trans from '../shared/trans';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [FormsModule,CommonModule]
 })
 export class DashboardComponent implements OnInit {
   requests: any[] = [];
+  allRequests: any[] = [];
   filteredRequests: any[] = [];
   filterType: string = '';
   filterStatus: string = '';
   translations: any;
+  currentPage: number = 1;
+  itemsPerPage: number = 10;
 
-  constructor(private requestService: RequestService, private globalErrorHandlerService: GlobalErrorHandlerService,) { }
+  constructor(
+    private requestService: RequestService, 
+    private globalErrorHandlerService: GlobalErrorHandlerService
+  ) { }
 
   ngOnInit(): void {
     const lang = localStorage.getItem("lang");
@@ -28,7 +34,8 @@ export class DashboardComponent implements OnInit {
       (res) => {
         console.log("getRequests: ", res);
         this.requests = res;
-        this.filteredRequests = res;
+        this.allRequests = res;
+        this.setPage(1); // Initialize the first page
       },
       (err) => {
         this.globalErrorHandlerService.handleError(err);
@@ -37,12 +44,28 @@ export class DashboardComponent implements OnInit {
   }
 
   applyFilters(): void {
-    this.filteredRequests = this.requests.filter((request) => {
+    console.log("-----------------1");
+    console.log(this.allRequests);
+    console.log(this.filterType);
+    console.log(this.filterStatus);
+    console.log("-----------------");
+    
+    const filtered = this.allRequests.filter((request) => {
       return (
         (this.filterType ? request.type === this.filterType : true) &&
         (this.filterStatus ? request.status === this.filterStatus : true)
       );
     });
+    this.requests = filtered;
+    this.filteredRequests = filtered.slice(
+      (this.currentPage - 1) * this.itemsPerPage, 
+      this.currentPage * this.itemsPerPage
+    );
+  }
+
+  setPage(page: number): void {
+    this.currentPage = page;
+    this.applyFilters();
   }
 
   approveRequest(requestId: string): void {
@@ -73,5 +96,9 @@ export class DashboardComponent implements OnInit {
       request.status = status;
       this.applyFilters();
     }
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.requests.length / this.itemsPerPage);
   }
 }

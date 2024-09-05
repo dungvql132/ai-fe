@@ -6,6 +6,7 @@ import { RequestService } from '../services/request.service';
 import { GlobalErrorHandlerService } from '../services/error-handler.service';
 import { NotificationService } from '../services/notification.service';
 import trans from '../shared/trans'
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-request-submission',
@@ -23,7 +24,8 @@ export class RequestSubmissionComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private requestService: RequestService,
-    private globalErrorHandlerService: GlobalErrorHandlerService
+    private globalErrorHandlerService: GlobalErrorHandlerService,
+    private router: Router
   ) {
     this.requestForm = this.fb.group({
       type: ['', Validators.required],
@@ -66,6 +68,8 @@ export class RequestSubmissionComponent implements OnInit {
         (response) => {
           this.successMessage = 'Request submitted successfully!';
           this.errorMessage = null;
+          this.globalErrorHandlerService.successError(this.successMessage);
+          this.router.navigate(["/dashboard"]);
         },
         (error) => {
           this.errorMessage = 'Failed to submit request.';

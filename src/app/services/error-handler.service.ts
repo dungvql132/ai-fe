@@ -23,8 +23,15 @@ export class GlobalErrorHandlerService implements ErrorHandler {
         next: () => console.log('Error logged to server'),
         error: err => console.log('Failed to log error to server', err)
       });
-    notificationService.showNotification(errorMessage.message);
+    notificationService.showNotification(errorMessage.message,'error');
     // Tùy chọn: ghi lỗi ra console
     console.error('An error occurred:', errorMessage);
+  }
+
+  successError(message: string): void {
+    // Tạo đối tượng thông báo lỗi
+    const notificationService = this.injector.get(NotificationService);
+    notificationService.showNotification(message,'');
+
   }
 }

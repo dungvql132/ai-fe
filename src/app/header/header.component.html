@@ -2,15 +2,16 @@
   <div class="container mx-auto flex justify-between items-center">
     <!-- Logo -->
     <div class="flex items-center">
-      <span class="ml-2 text-xl font-semibold text-white">Company Name</span>
+      <span class="ml-2 text-xl font-semibold text-white">RMS</span>
     </div>
 
     <!-- Navigation Links -->
     <nav class="hidden md:flex space-x-6">
       <a href="/dashboard" class="text-white hover:text-light">Dashboard</a>
       <a href="/requestSubmission" class="text-white hover:text-light">Requests</a>
-      <a href="/report" class="text-white hover:text-light">Reports</a>
-      <a href="/managerDashboard" class="text-white hover:text-light">Admin Panel</a>
+      <a *ngIf="role == 'admin'" href="/report" class="text-white hover:text-light">Reports</a>
+      <a *ngIf="role == 'manager'" href="/managerDashboard" class="text-white hover:text-light">Manager Panel</a>
+
     </nav>
     <div class="language-switcher">
       <select 
@@ -35,7 +36,7 @@
           alt="User Profile"
           class="h-10 w-10 rounded-full"
         />
-        <span class="ml-2 hidden md:block">John Doe</span>
+        <span class="ml-2 hidden md:block">{{ name }}</span>
         <i class="ml-2 fas fa-chevron-down"></i>
       </button>
       <div
@@ -46,7 +47,7 @@
         <a href="#" class="block px-4 py-2 text-dark hover:bg-light"
           >Settings</a
         >
-        <a href="#" class="block px-4 py-2 text-dark hover:bg-light">Logout</a>
+        <a href="/login" (click)="logout()" class="block px-4 py-2 text-dark hover:bg-light">Logout</a>
       </div>
     </div>
   </div>

@@ -39,7 +39,7 @@
         class="bg-d-white col-span-2 border border-secondary text-dark text-sm rounded-lg focus:ring-secondary focus:border-primary w-50 p-1.5"
       ></textarea>
     </div>
-    <div class="grid grid-cols-3 gap-4 my-8">
+    <!-- <div class="grid grid-cols-3 gap-4 my-8">
       <label for="attachment" class="mb-2 text-dark mr-4">{{ translations.attachment }}</label>
       <input
         id="attachment"
@@ -48,7 +48,7 @@
         (change)="onFileChange($event)"
         class="bg-d-white col-span-2 border border-secondary text-dark text-sm rounded-lg focus:ring-secondary focus:border-primary w-50 p-1.5"
       />
-    </div>
+    </div> -->
     <div class="grid grid-cols-3 gap-4 my-8">
       <label for="department" class="mb-2 text-dark mr-4">{{ translations.department }}</label>
       <input
@@ -66,6 +66,4 @@
       {{ translations.submit }}
     </button>
   </form>
-  <div *ngIf="successMessage" class="success">{{ translations.successMessage }}</div>
-  <div *ngIf="errorMessage" class="error">{{ translations.errorMessage }}</div>
 </div>

@@ -13,10 +13,12 @@ import { CommonModule } from '@angular/common';
 export class NotificationComponent {
   showNotification = false;
   message = '';
+  type: string;
 
   constructor(private notificationService: NotificationService) {
     this.notificationService.getNotification().subscribe(notification => {
       this.message = notification.message;
+      this.type = notification.type;
       this.showNotification = true;
 
       setTimeout(() => {
