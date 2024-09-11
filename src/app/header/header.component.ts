@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import trans from '../shared/trans';
 
 @Component({
   selector: 'app-header',
@@ -14,11 +15,15 @@ export class HeaderComponent {
   selectedLanguage: string;
   role: string;
   name: string;
+  translations: any;
 
   ngOnInit(): void {
     this.selectedLanguage = localStorage.getItem('lang') || 'en';
     this.role = localStorage.getItem('role') || '';
     this.name = localStorage.getItem('name') || '';
+
+    const lang = localStorage.getItem("lang");
+    this.translations = trans[lang] || trans['en'];
   }
 
   toggleUserMenu() {

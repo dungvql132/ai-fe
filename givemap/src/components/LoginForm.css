@@ -1,0 +1,144 @@
+/* src/components/LoginForm.css */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #2148C0;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 50%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  width: 500px;
+}
+
+.background-circles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: #264ECA;
+}
+
+.circle.large {
+  width: 50%;
+  height: 50%;
+  bottom: 0;
+  left: 0;
+}
+
+.circle.medium {
+  width: 40%;
+  height: 40%;
+  bottom: 10%;
+  left: 10%;
+  background: #244BC5;
+}
+
+.circle.small {
+  width: 30%;
+  height: 30%;
+  bottom: 20%;
+  left: 20%;
+  background: #274FC7;
+}
+
+.login-form {
+  position: relative;
+  z-index: 1;
+  width: 90%;
+  max-width: 400px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px;
+  background: white;
+  border: 3px solid white;
+  border-radius: 50%;
+}
+
+h2 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  color: white;
+  font-size: 14px;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 4px;
+  background: transparent;
+  color: white;
+}
+
+.error {
+  color: red;
+  font-size: 0.9em;
+}
+
+.success {
+  color: green;
+  font-size: 1em;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: white;
+  color: #2148C0;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+  background: #f0f0f0;
+}
+
+.forgot-password {
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 20px;
+}

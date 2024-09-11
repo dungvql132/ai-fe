@@ -1,4 +1,5 @@
 export const en = {
+    requests: "Requests",
     pendingRequests: "Pending Requests",
     filterByType: "Filter by Type:",
     filterByStatus: "Filter by Status:",
@@ -22,5 +23,8 @@ export const en = {
     successMessage: "Your request has been submitted successfully.",
     errorMessage: "There was an error submitting your request. Please try again.",
     myRequestsOverview: "My Requests Overview",
+    dashboard: "Dashboard",
+    managerPanel : "Manager Panel",
+    reports : "Reports"
   };
   

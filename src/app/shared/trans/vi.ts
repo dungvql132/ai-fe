@@ -1,4 +1,5 @@
 export const vi = {
+    requests: "Danh sách yêu cầu",
     pendingRequests: "Yêu cầu chờ xử lý",
     filterByType: "Lọc theo loại:",
     filterByStatus: "Lọc theo trạng thái:",
@@ -22,5 +23,8 @@ export const vi = {
     successMessage: "Yêu cầu của bạn đã được gửi thành công.",
     errorMessage: "Đã xảy ra lỗi khi gửi yêu cầu của bạn. Vui lòng thử lại.",
     myRequestsOverview: "Tổng quan về yêu cầu của tôi",
+    dashboard: "Tổng quan",
+    managerPanel : "Bảng quản lý",
+    reports : "Báo cáo"
   };
   

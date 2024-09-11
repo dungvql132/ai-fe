@@ -44,6 +44,8 @@ export class RegisterComponent implements OnInit {
         (res) => {
           console.log("res: ", res);
           localStorage.setItem('token', res.token);
+          localStorage.setItem('role', res.role);
+          localStorage.setItem('name', res.userName);
           const userRole = res.role;
           this.router.navigate(['/dashboard']);
         },

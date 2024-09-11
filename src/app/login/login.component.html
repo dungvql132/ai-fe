@@ -4,7 +4,7 @@
     <h2 class="text-2xl font-medium text-center text-dark mb-6">Login</h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="mb-4">
-        <label for="email" class="block text-dark mb-2">email</label>
+        <label for="email" class="block text-dark mb-2">Email</label>
         <input
           id="email"
           formControlName="email"
@@ -21,7 +21,7 @@
           "
           class="text-error italic"
         >
-          email is required.
+          Email is required.
         </div>
         <div
           *ngIf="
@@ -64,10 +64,7 @@
       </button>
     </form>
     <p class="text-center text-dark mt-6">
-      Don't have an account? <a href="#" class="underline">Sign up</a>
-    </p>
-    <p class="text-center text-dark mt-6">
-      <a href="#" class="underline">Forgot password?</a>
+      Don't have an account? <a href="/register" class="underline">Sign up</a>
     </p>
   </div>
 </div>

@@ -7,10 +7,10 @@
 
     <!-- Navigation Links -->
     <nav class="hidden md:flex space-x-6">
-      <a href="/dashboard" class="text-white hover:text-light">Dashboard</a>
-      <a href="/requestSubmission" class="text-white hover:text-light">Requests</a>
-      <a *ngIf="role == 'admin'" href="/report" class="text-white hover:text-light">Reports</a>
-      <a *ngIf="role == 'manager'" href="/managerDashboard" class="text-white hover:text-light">Manager Panel</a>
+      <a href="/dashboard" class="text-white hover:text-light">{{ translations.dashboard }}</a>
+      <a href="/requestSubmission" class="text-white hover:text-light">{{ translations.requests }}</a>
+      <a *ngIf="role == 'admin'" href="/report" class="text-white hover:text-light">{{ translations.reports }}</a>
+      <a *ngIf="role == 'manager'" href="/managerDashboard" class="text-white hover:text-light">{{ translations.managerPanel }}</a>
 
     </nav>
     <div class="language-switcher">

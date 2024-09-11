@@ -18,4 +18,8 @@ export class AuthService {
   register(credentials: Partial<{ email: string; password: string }>): Observable<any> {
     return this.http.post<any>(this.apiUrl + `/register`, credentials);
   }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
 }

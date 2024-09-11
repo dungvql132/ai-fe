@@ -15,20 +15,6 @@
       <option value="travel">{{ translations.travel }}</option>
       <option value="expense">{{ translations.expense }}</option>
     </select>
-    <label class="block mb-2 text-sm font-medium text-dark" for="status">
-      {{ translations.filterByStatus }}
-    </label>
-    <select
-      class="bg-white border border-secondary text-dark text-sm rounded-lg focus:ring-secondary focus:border-primary block w-50 p-2.5"
-      id="status"
-      [(ngModel)]="filterStatus"
-      (change)="applyFilters()"
-    >
-      <option value="">{{ translations.all }}</option>
-      <option value="pending">{{ translations.pending }}</option>
-      <option value="approved">{{ translations.approved }}</option>
-      <option value="rejected">{{ translations.rejected }}</option>
-    </select>
   </div>
   <div class="pt-8">
     <table class="w-full text-sm text-left rtl:text-right text-dark">
